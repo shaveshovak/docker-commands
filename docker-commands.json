@@ -1,0 +1,242 @@
+{
+	"linux": [
+		
+	],
+	"windows" : [
+		
+	],
+	"docker": [
+		{
+			"command": "docker `action` --help ",
+			"description": "Show Full configuration list of `actions`",
+			"category": "📋"
+		},
+		{
+			"command": "docker build -t image-NAME 🔵",
+			"description": "Build Custom Image From Dockerfile `-t Your Image Name` `🔵 -> Dockerfile Path`",
+			"category": "📀"
+		},
+		{
+			"command": "docker build -t image-NAME:`tag`",
+			"description": "Build Custom Image From Dockerfile `Default TAG -> latest`",
+			"category": "📀"
+		},
+		{
+			"command": "docker tag `current-image-name:tag` -> `new-image-name:tag`",
+			"description": "Rename images",
+			"category": "📀"
+		},
+		{
+			"command": "docker ps",
+			"description": "Show Only Running Container",
+			"category": "💽"
+		},
+		{
+			"command": "docker ps -a",
+			"description": "Show All Containers",
+			"category": "💽"
+		},
+		{
+			"command": ["docker images", "docker image ls"],
+			"description": "Show All Images",
+			"category": "📀"
+		},
+		{
+			"command": ["docker run image-NAME | image-ID", "docker run image-NAME:tag"],
+			"description": "Run Container From Image",
+			"category": "💽"
+		},
+		{
+			"command": "docker run -d image-NAME | image-ID",
+			"description": "Run Container From Image `-d -> detached`",
+			"category": "💽"
+		},
+		{
+			"command": "docker run --name `Container Name` image-NAME | image-ID",
+			"description": "Run Container From Image With Name",
+			"category": "💽"
+		},
+		{
+			"command": "docker run --name container-name -d --rm image-name",
+			"description": "`--rm` -> remove container after stop or done",
+			"category": "💽"
+		},
+		{
+			"command": "docker run --name container-name -d --rm -p 8080:80 image-name",
+			"description": "`-p Host-PORT:Container-PORT` -> Take it out of port and listen -> Dockerfile add command EXPOSE 8080",
+			"category": "💽"
+		},
+		{
+			"command": ["docker run -i -t image-NAME | image-ID", "docker run -it image-NAME | image-ID"],
+			"description": "Run Container From Image `-i -> interactive` | `-t -> terminal`",
+			"category": "💽"
+		},
+		{
+			"command": ["docker exec -i -t Container-NAME | Container-ID `bush`", "docker exec -it Container-NAME | Container-ID `bush`"],
+			"description": "Run Container From Image `-i -> interactive` | `-t -> terminal`",
+			"category": "💽"
+		},
+		{
+			"command": "docker run --name container-name -e TZ=Europe/Tbilisi image-name",
+			"description": "set environment variables `-e KEY=value`",
+			"category": "💽"
+		},
+		{
+			"command": [
+						"docker run --name container-name -v local_storage:/app/storage_path image-name",
+						"docker run --name container-name -v ./app/storage:/app/storage_path image-name"
+						],
+			"description": 
+						[
+							"set Volumes From Container `-v local_storage:/app/storage_path`",
+							"set Volumes From Container `-v ./app/storage:/app/storage_path`",
+							"set Volumes From Container `-v local | global:/path/folder/in/container`",
+							"set `Folder PATH` that should not be deleted `-v /app/node_modules`"
+						],
+			"Bind-Mounts-Shortcuts": {
+				"macOS/Linux": "-v $(pwd):/app",
+				"Windows": "-v \"%cd%\":/app"
+			},
+			"category": "💽"
+		},
+		{
+			"command": "docker stop Container-NAME | Container-ID",
+			"description": "Stop Running Container",
+			"category": "💽"
+		},
+		{
+			"command": "docker rm Container-NAME | Container-ID",
+			"description": "Delete Container",
+			"category": "💽"
+		},
+		{
+			"command": "docker container prune",
+			"description": "Delete All Stopped Container",
+			"category": "💽"
+		},
+		{
+			"command": ["docker container inspect Container-NAME | Container-ID"],
+			"description": "show All Container Data",
+			"category": "💽"
+		},
+		{
+			"command": "docker rmi image-NAME | image-ID",
+			"description": "Delete Image",
+			"category": "📀"
+		},
+		{
+			"command": "docker volume ls",
+			"description": "Show All Volumes inside `Desktop Docker` -> `VM`",
+			"category": "📂"
+		},
+		{
+			"command": "docker volume create `Volume_name` ->",
+			"description": "Create New volume Into `Docker Desktop` -> VM",
+			"category": "📂"
+		},
+		{
+			"command": "docker volume inspect `Volume_name`",
+			"description": "Check volume Properties Into `Docker Desktop` -> VM",
+			"category": "📂"
+		},
+		{
+			"command": ["docker volume rm VOL_NAME", "docker volume prune"],
+			"description": ["Removing Anonymous Volumes", "piling up a bunch of unused anonymous volumes | `clear them`"],
+			"category": "📂"
+		},
+		{
+			"command": "docker logs Container-NAME | Container-ID",
+			"description": "Show All Logs Inside Container",
+			"category": "💬"
+		},
+		{
+			"command": ["docker cp ./local_path CONTAINER:/path", "docker cp CONTAINER:/path ./local_path"],
+			"description": "Copy files/folders between a container and the local filesystem",
+			"⚠": "Outputting and inputting data from the container",
+			"category": "📁"
+		},
+		{
+			"command": "docker network create `network-name`",
+			"description": "Create Isolate Network for Containers",
+			"category": "🕸"
+		},
+		{
+			"command": "docker network ls",
+			"description": "Show All Existing Isolate Network",
+			"category": "🕸"
+		},
+		{
+			"command": "docker run -d --name `Container-name` --network `network-name` image-name",
+			"description": "Running the container on an isolated network",
+			"category": "🕸",
+			"⚠": ["The name of the container is the host on the isolated network", "CONTAINER_NAME <-> HOST_NAME"]
+		},
+		{
+			"command": "docker network create --driver bridge my-net",
+			"description": "Create `Bridge` For `my-network`",
+			"category": "🕸"
+		},
+		{
+			"command": ["docker login", "docker logout"],
+			"description": "Authorization on `docker.hub`",
+			"⚠": "USERNAME:username, PASSWORD:password",
+			"category": "🔐"
+		},
+		{
+			"command": "docker push username/image-name",
+			"description": "Push Image On `docker.hub`",
+			"⚠": "username/image-name",
+			"category": "💼"
+		},
+		{
+			"command": ["docker pull image-name", "docker pull username/image-name"],
+			"description": "Pull Image From `docker.hub`",
+			"⚠": "username/image-name",
+			"category": "💼"
+		}
+	], 
+	"Multi Line Docker Command": [
+									"docker run \\",
+									"--name container-name \\", 
+									"-v ${PWD}:/usr/share/nginx/html \\", 
+									"-p 8080:80 \\", 
+									"-d \\",
+									"--rm \\",
+									"nginx"
+								],
+	"Important": [
+		{
+			"instruction": "host.docker.internal -> 5.152.95.12",
+			"description": [
+							"host.docker.internal -> Translated `YOUR IP` Address",
+							"Connect From `Dockerized Application` <-> `YOUR LOCAL MACHINE`"
+							],
+			"category": "💻"
+		}
+	],
+	"docker-compose": [
+		{
+			"command": "docker compose up",
+			"description": "Start All Services with instructions`"
+		},
+		{
+			"command": "docker compose down",
+			"description": "Stop All Services -> `Running Containers`",
+			"⚠": "docker compose -f docker-compose.public.yml down"
+		},
+		{
+			"command": "docker compose -f docker-compose.public.yml up",
+			"description": "Start All Services with instructions`",
+			"⚠": "if `docker compose` has a different name `docker-compose.yml -> docker-compose.public.yml`"
+		},
+		{
+			"command": "docker compose up",
+			"description": "Start All Services with instructions`"
+		},
+		{
+			"command": ["docker compose run `service`", "docker compose run `service` `npm install`"],
+			"description": "Run `service` <-> `container` from `docker compose`",
+			"⚠":"Running container is not deleted automatically after shutdown `USE -> --rm`"
+		}
+	]
+}
